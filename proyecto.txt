@@ -3,3 +3,7 @@ Story Mapping
 https://docs.google.com/spreadsheets/d/1UypsQlh58MalV13Mh9ebm8UETLfSaqPjxnItcGtwbBs/edit?usp=sharing
 
 Tema: Gestor de Aerolinea
+
+paquetes instalados con pip:
+flask
+pymongo
