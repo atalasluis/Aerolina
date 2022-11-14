@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aerolinea Fenix</title>
     <link rel="stylesheet" href='../static/css/style.css'><!--"{{ url_for('static', filename='css/main.css') }}"-->
-
+    
 </head>
 <body>
     <header>
@@ -17,11 +17,13 @@
         </a>
         
         <nav>
-            <a href="#" class="nav-link">Vuelos</a>
+            <a href={{ url_for('vuelos') }} class="nav-link">Vuelos</a>
             <a href="#" class="nav-link">Mi reserva</a>
             <a href="#" class="nav-link">Check in</a>
             <a href="#" class="nav-link">Estado de Vuelo</a>
         </nav>
     </header>
+
+
 </body>
 </html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aerolinea Fenix</title>
+    <link rel="stylesheet" href='../static/css/style.css'><!--"{{ url_for('static', filename='css/main.css') }}"-->
+
+</head>
+<body>
+    <header>
+        
+        <a href="#" class="logo">
+            <img src="../static/imgs/logo.png" alt="logo de la compañia" class="logo-img">
+            <h2 class="logo-nombre">Fenix</h2>
+        </a>
+        
+        <nav>
+            <a href={{ url_for('home') }} class="nav-link">Home</a>
+            <a href={{ url_for('vuelos') }} class="nav-link">Vuelos</a>
+            <a href="#" class="nav-link">Mi reserva</a>
+            <a href="#" class="nav-link">Check in</a>
+            <a href="#" class="nav-link">Estado de Vuelo</a>
+        </nav>
+    </header>
+    
+    <div class="container">
+        <h1 class="text-center mt-5 mb-5">Vuelos</h1>
+    </div>
+
+    <td class="func1"><a href={{ url_for('vuelos_crear') }}><button type="submit">crear</button></a></td>
+
+    <div class="card-body">
+        <ul class="list-group">
+            <div class="row row-col-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-3">
+                {% for vuelo in vuelos %}
+
+                    <div class="col">
+                        <li class="list-group-item mb-3">
+                            <form action="/edit/{{vuelo.idVuelo}}" method="POST">
+                                <small>ID Vuelo:</small>
+                                <input type="text" class="form-control" value="{{vuelo.idVuelo}}" name="idVuelo">
+                                <br></br>
+                                <small>Fecha de Salida: </small>
+                                <input type="text" class="form-control" value="{{vuelo.fechaSalida}}" name="fechaSalida">
+                                <br></br>
+                                <small>Destino: </small>
+                                <input type="text" class="form-control" value="{{vuelo.destino}}" name="destino">
+                                <br></br>
+                                <small>Capacidad de Vuelo: </small>
+                                <input type="text" class="form-control" value="{{vuelo.capacidad}}" name="capacidad">
+                                <br></br>
+                                <small>Aeropuerto de Origen: </small>
+                                <input type="text" class="form-control" value="{{vuelo.aeropuertoOrigen}}" name="aeropuertoOrigen">
+                                <br></br>
+                                <small>Aeropuerto de Destino</small>
+                                <input type="text" class="form-control" value="{{vuelo.aeropuertoDestino}}" name="aeropuertoDestino">
+                                <br></br>
+
+                            </form>
+                        </li>
+                    </div>
+                    <br></br>
+                {% endfor %}
+            </div>
+        </ul>
+    </div> 
+
+</body>
+</html>
