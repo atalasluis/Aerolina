@@ -6,6 +6,7 @@ body{
 a{
     text-decoration: none;
     color: white;
+
 }
 a:hover{
     color: #ff0d0d;
@@ -37,6 +38,17 @@ nav a:hover{
     color: #ff0d0d;
 }
 
+header a {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--secondary);
+    border-radius: 10px;
+    border: 1px solid var(--secondary);
+    padding: 10px 20px;
+    margin-top: 30px;
+    transition: .5s;
+}
+
 /*
 header {
     background: rgba(0,0,0,0.7);
@@ -61,7 +73,9 @@ nav ul li a {
     padding: 20px;
     color: #fff;
     text-decoration: none;
+    
 }
+
 nav ul li:hover {
     background: #ff0d0d;
 }
