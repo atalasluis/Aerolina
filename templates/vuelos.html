@@ -17,10 +17,11 @@
         </a>
         
         <nav>
-            <a href={{ url_for('vuelos') }} class="nav-link">VUELOS</a>
-            <a href="#" class="nav-link">MI RESERVA</a>
-            <a href="#" class="nav-link">CHECK IN</a>
-            <a href="#" class="nav-link">ESTADO DE VUELO</a>
+            <a href={{ url_for('home') }} class="nav-link">Home</a>
+            <a href={{ url_for('vuelos') }} class="nav-link">Vuelos</a>
+            <a href="#" class="nav-link">Mi reserva</a>
+            <a href="#" class="nav-link">Check in</a>
+            <a href="#" class="nav-link">Estado de Vuelo</a>
         </nav>
     </header>
     
@@ -37,7 +38,7 @@
 
                     <div class="col">
                         <li class="list-group-item mb-3">
-                            <form action="/edit/{{vuelo.idVuelo}}" method="POST">
+                            <form>
                                 <small>ID Vuelo:</small>
                                 <input type="text" class="form-control" value="{{vuelo.idVuelo}}" name="idVuelo">
                                 <br></br>
@@ -56,6 +57,9 @@
                                 <small>Aeropuerto de Destino</small>
                                 <input type="text" class="form-control" value="{{vuelo.aeropuertoDestino}}" name="aeropuertoDestino">
                                 <br></br>
+                                <td class="func1"><a href="./vuelos/editar?idVuelo={{ vuelo.idVuelo }}"><button class="btn btn-primary btn-sm mt-3" type="submit">Editar</button></a></td>
+                                <td class="func1"><a href="./remove?idVuelo={{ vuelo.idVuelo }}"><button type="submit">Eliminar</button></a></td>
+                                
 
                             </form>
                         </li>
