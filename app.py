@@ -3,16 +3,18 @@ from bson import ObjectId # For ObjectId to work
 from pymongo import MongoClient
 import os
 
-
 app = Flask(__name__)
 client = MongoClient("mongodb://127.0.0.1:27017") #host uri
 db = client.Aerolinea    #Select the database
 _vuelos = db.vuelos #Select the collection name
 
+#--------------------- Home -------------------------
+
 @app.route('/')
 def home():
     return render_template('index.html')
 
+#----------------- CRUD DE VUELOS -------------------
 @app.route('/vuelos')
 def vuelos():
     vuelosRecieved=_vuelos.find()
@@ -63,5 +65,17 @@ def action3 ():
     _vuelos.update_one({"idVuelo":ObjectId(id)}, {'$set':{ "fechaSalida":fechaSalida, "destino":destino, "capacidad":capacidad, "aeropuertoOrigen":aeropuertoOrigen,"aeropuertoDestino":aeropuertoDestino }})
     return redirect("/vuelos")
 
+#----------------- CRUD DE RESERVA ------------------
+@app.route('/reserva')
+def reserva():
+    return render_template('miReserva.html')
+
+#----------------------- PAGOS ----------------------
+@app.route('/pagos')
+
+def pagos():
+    return render_template('Pagos.html')
+
+#----------------------------------------------------
 if __name__ == '__main__':
     app.run(debug=True, port=4000)

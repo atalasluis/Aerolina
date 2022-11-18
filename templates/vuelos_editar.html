@@ -5,24 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aerolinea Fenix</title>
-    <link rel="stylesheet" href='../static/css/style.css'><!--"{{ url_for('static', filename='css/main.css') }}"-->
+    <link rel="stylesheet" href='../static/css/style.css'>
     
 </head>
 <body>
     <header>
-        
-        <a href="#" class="logo">
+        <!-- ************************** Barra de navegacion *********************** -->
+        <a href="{{url_for('home')}}" class="logo">
             <img src="../static/imgs/logo.png" alt="logo de la compañia" class="logo-img">
-            <h2 class="logo-nombre">Fenix</h2>
+            <h2 class="logo-nombre">F E N I X</h2>
         </a>
         
         <nav>
-            <a href={{ url_for('home') }} class="nav-link">Home</a>
-            <a href={{ url_for('vuelos') }} class="nav-link">Vuelos</a>
-            <a href="#" class="nav-link">Mi reserva</a>
-            <a href="#" class="nav-link">Check in</a>
-            <a href="#" class="nav-link">Estado de Vuelo</a>
+            <a href="{{url_for('vuelos')}}" class="nav-link">Vuelos</a>
+            <a href="{{url_for('reserva')}}" class="nav-link">Mi_reserva</a>
+            <a href="{{url_for('pagos')}}" class="nav-link">Pagos</a>
         </nav>
+        <!-- ********************************************************************** -->
     </header>
 
     <br></br>
@@ -38,17 +37,17 @@
                     {% for vuelo in vuelos %}
 	            	Unique Object ID : {{ vuelo['idVuelo'] }}<br/>
 	                <input type="text" name="idVuelo" value="{{ vuelo['idVuelo'] }}" hidden>
-
+                    <input type="text">
                     <label>Fecha de Salida</label>
                     <input type="date" class="form-control mb-3" name="fechaSalida" value="{{ vuelo['fechaSalida'] }}" placeholder="{{ vuelo['fechaSalida'] }}">
                     <label>Destino</label>
-                    <input type="text" class="form-control mb-3" name="destino" value="{{ vuelo['destino'] }}" placeholder="{{ vuelo['destino'] }}>
+                    <input type="text" class="form-control mb-3" name="destino" value="{{ vuelo['destino'] }}" placeholder="{{ vuelo['destino'] }}" >
                     <label>Capacidad</label>
-                    <input type="text" class="form-control mb-3" name="capacidad" value="{{ vuelo['capacidad'] }}" placeholder="{{ vuelo['capacidad'] }}>
+                    <input type="text" class="form-control mb-3" name="capacidad" value="{{ vuelo['capacidad'] }}" placeholder="{{ vuelo['capacidad'] }}">
                     <label>Aeropuerto de Origen</label>
-                    <input type="text" class="form-control mb-3" name="aeropuertoOrigen" value="{{ vuelo['aeropuertoOrigen'] }}" placeholder="{{ vuelo['aeropuertoOrigen'] }}>
+                    <input type="text" class="form-control mb-3" name="aeropuertoOrigen" value="{{ vuelo['aeropuertoOrigen'] }}" placeholder="{{ vuelo['aeropuertoOrigen'] }}">
                     <label>Aeropuerto de Destino</label>
-                    <input type="text" class="form-control mb-3" name="aeropuertoDestino" value="{{ vuelo['aeropuertoDestino'] }}" placeholder="{{ vuelo['aeropuertoDestino'] }}>
+                    <input type="text" class="form-control mb-3" name="aeropuertoDestino" value="{{ vuelo['aeropuertoDestino'] }}" placeholder="{{ vuelo['aeropuertoDestino'] }}">
                     {% endfor %}
                     <button class="btn btn-primary" type="submit">Editar Vuelo</button>
                 </form>
