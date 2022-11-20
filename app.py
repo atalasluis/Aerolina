@@ -20,25 +20,10 @@ def vuelos():
     vuelosRecieved=_vuelos.find()
     return render_template('vuelos.html',vuelos=vuelosRecieved)
 
+#Method create
 @app.route('/vuelos/crear')
 def vuelos_crear():
     return render_template('vuelos_crear.html')
-
-@app.route('/vuelos/editar')
-def vuelos_editar():
-    id=request.values.get("idVuelo")
-    vuelo =_vuelos.find({"idVuelo":ObjectId(id)})
-    print(vuelo)
-    return render_template('vuelos_editar.html',vuelos=vuelo)
-
-@app.route("/remove")
-def remove ():
-    #Deleting a Task with various references
-    key=request.values.get("idVuelo")
-    print(key)
-    _vuelos.delete_one({"idVuelo":ObjectId(key)})
-    return redirect("/vuelos")
-
 
 @app.route("/action", methods=['POST'])
 def action ():
@@ -53,16 +38,22 @@ def action ():
     _vuelos.insert_one({"idVuelo":idVuelo, "fechaSalida":fechaSalida, "destino":destino, "capacidad":capacidad, "aeropuertoOrigen":aeropuertoOrigen,"aeropuertoDestino":aeropuertoDestino})
     return redirect("/vuelos")
 
-@app.route("/action3", methods=['POST'])
-def action3 ():
+#Method update
+@app.route("/edit/<string:vuelo_id>", methods=['POST'])
+def action3 (vuelo_id):
 	#Updating a Task with various references
     fechaSalida=request.values.get("fechaSalida")
     destino=request.values.get("destino")
     capacidad=request.values.get("capacidad")
     aeropuertoOrigen=request.values.get("aeropuertoOrigen")
     aeropuertoDestino=request.values.get("aeropuertoDestino")
-    id=request.values.get("idVuelo")
-    _vuelos.update_one({"idVuelo":ObjectId(id)}, {'$set':{ "fechaSalida":fechaSalida, "destino":destino, "capacidad":capacidad, "aeropuertoOrigen":aeropuertoOrigen,"aeropuertoDestino":aeropuertoDestino }})
+    _vuelos.update_one({"idVuelo":vuelo_id}, {'$set':{ "fechaSalida":fechaSalida, "destino":destino, "capacidad":capacidad, "aeropuertoOrigen":aeropuertoOrigen,"aeropuertoDestino":aeropuertoDestino }})
+    return redirect("/vuelos")
+
+#Method delete
+@app.route("/remove/<string:vuelo_id>")
+def remove (vuelo_id):
+    _vuelos.delete_one({'idVuelo' : vuelo_id})
     return redirect("/vuelos")
 
 #----------------- CRUD DE RESERVA ------------------

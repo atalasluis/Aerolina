@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aerolinea Fenix</title>
-    <link rel="stylesheet" href='../static/css/style.css'><!--"{{ url_for('static', filename='css/main.css') }}"-->
+    <link rel="stylesheet" href='../static/css/style.css'>
     <link rel="icon" href="../static/imgs/logo.png">
 </head>
 <body>
@@ -17,26 +17,28 @@
         </a>
         
         <nav>
-            <a href="{{url_for('vuelos')}}" class="nav-link">Vuelos</a>
-            <a href="{{url_for('reserva')}}" class="nav-link">Mi_reserva</a>
-            <a href="{{url_for('pagos')}}" class="nav-link">Pagos</a>
+            <a href="{{url_for('vuelos')}}" class="nav-link">VUELOS</a>
+            <a href="{{url_for('reserva')}}" class="nav-link">MI_RESERVA</a>
+            <a href="{{url_for('pagos')}}" class="nav-link">PAGOS</a>
         </nav>
         <!-- ********************************************************************** -->
-    </header> 
-    <div class="container">
-        <h1 class="text-center mt-5 mb-5">Vuelos</h1>
-    </div>
+    </header>
 
-    <td class="func1"><a href="{{ url_for('vuelos_crear') }}"><button type="submit">crear</button></a></td>
+    <br></br>
+    <div class="container">
+        <h1 class="text-center mt-5 mb-5">VUELOS</h1>
+    </div>
+    <td class="func1"><a href="{{ url_for('vuelos_crear') }}"><button type="submit">CREAR</button></a></td>
+    <br></br>
 
     <div class="card-body">
         <ul class="list-group">
             <div class="row row-col-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-3">
+                <!-- muestra grupo de vuelos -->
                 {% for vuelo in vuelos %}
-
                     <div class="col">
                         <li class="list-group-item mb-3">
-                            <form>
+                            <form action="/edit/{{vuelo.idVuelo}}" method="POST">
                                 <small>ID Vuelo:</small>
                                 <input type="text" class="form-control" value="{{vuelo.idVuelo}}" name="idVuelo">
                                 <br></br>
@@ -55,15 +57,15 @@
                                 <small>Aeropuerto de Destino</small>
                                 <input type="text" class="form-control" value="{{vuelo.aeropuertoDestino}}" name="aeropuertoDestino">
                                 <br></br>
-                                <td class="func1"><a href="./vuelos/editar?idVuelo={{ vuelo.idVuelo }}"><button class="btn btn-primary btn-sm mt-3" type="submit">Editar</button></a></td>
-                                <td class="func1"><a href="./remove?idVuelo={{ vuelo.idVuelo }}"><button type="submit">Eliminar</button></a></td>
-                                
 
+                                <button class="btn btn-primary btn-sm mt-3" type="submit">EDITAR</button>
+                                <a href="{{url_for('remove', vuelo_id=vuelo.idVuelo)}}" class="btn btn-primary btn-sm mt-3">ELIMINAR</a>
                             </form>
                         </li>
                     </div>
                     <br></br>
                 {% endfor %}
+                <!-- ******************************************************************* -->
             </div>
         </ul>
     </div> 
