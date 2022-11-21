@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aerolinea Fenix</title>
     <link rel="stylesheet" href='../static/css/style.css'><!--"{{ url_for('static', filename='css/main.css') }}"-->
+    <link rel="icon" href="../static/imgs/logo.png">
     
 </head>
 <body>
@@ -22,6 +23,7 @@
             <a href="{{url_for('pagos')}}" class="nav-link">PAGOS</a>
         </nav>
         <!-- ********************************************************************** -->
+        <body background="../static/imgs/fondo4.jpg"></body>
     </header>
 
     <br></br>
@@ -33,19 +35,25 @@
             </div>
             <div class="card-body">
                 <form action="/action" method="POST">
-                    <label>ID Vuelo</label>
+                    <small>ID Vuelo</small>
                     <input type="text" class="form-control mb-3" name="idVuelo">
-                    <label>Fecha de Salida</label>
+                    <br></br>
+                    <small>Fecha de Salida</small>
                     <input type="date" class="form-control mb-3" name="fechaSalida">
-                    <label>Destino</label>
+                    <br></br>
+                    <small>Destino</small>
                     <input type="text" class="form-control mb-3" name="destino">
-                    <label>Capacidad</label>
+                    <br></br>
+                    <small>Capacidad</small>
                     <input type="text" class="form-control mb-3" name="capacidad">
-                    <label>Aeropuerto de Origen</label>
+                    <br></br>
+                    <small>Aeropuerto de Origen</small>
                     <input type="text" class="form-control mb-3" name="aeropuertoOrigen">
-                    <label>Aeropuerto de Destino</label>
+                    <br></br>
+                    <small>Aeropuerto de Destino</small>
                     <input type="text" class="form-control mb-3" name="aeropuertoDestino">
-                    <button class="btn btn-primary" type="submit">CREAR</button>
+                    <br></br>
+                    <button class="favorite styled" type="submit">CREAR</button>
                 </form>
             </div>
         </div>

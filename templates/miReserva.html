@@ -22,10 +22,12 @@
             <a href="{{url_for('pagos')}}" class="nav-link">PAGOS</a>
         </nav>
         <!-- ********************************************************************** -->
+        <body background="../static/imgs/fondo3.jpg"></body>
     </header>
     <br>
     <div>
         <div>
+            <h1 style="color:#000000" class="text-center mt-5 mb-5">RESERVAS</h1>
             <!-- crud de pasajero -->
             <form action="/action/crear_reserva" method="POST">
                 <small>ID Reserva:</small>
@@ -43,12 +45,14 @@
                 <small>Asiento</small>
                 <input type="text" class="form-control mb-3" name="Asiento">
                 <br></br>
-                <button class="btn btn-primary" type="submit">Reservar</button>
+                <button class="favorite styled" type="submit">Reservar</button>
             </form>
         </div>
         <div class="box">
             {% for vuelo in vuelos %}
             <form action="">
+                <br></br>
+                <br></br>
                 <small>ID Vuelo:</small>
                 <input type="text" class="form-control" value="{{vuelo.idVuelo}}" name="idVuelo">
                 <br></br>
@@ -58,7 +62,7 @@
                 <small>Destino:</small>
                 <input type="text" class="form-control" value="{{vuelo.destino}}" name="destino">
                 <br></br>
-                <a href="{{url_for('remove', vuelo_id=vuelo.idVuelo)}}" class="btn btn-primary btn-sm mt-3">AGREGAR</a>
+                <a href="{{url_for('remove', vuelo_id=vuelo.idVuelo)}}" class="buttonx">AGREGAR</a>
                 <br></br>
             </form>
             {% endfor %}

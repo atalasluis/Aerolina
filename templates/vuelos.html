@@ -22,13 +22,17 @@
             <a href="{{url_for('pagos')}}" class="nav-link">PAGOS</a>
         </nav>
         <!-- ********************************************************************** -->
+        <body background="../static/imgs/fondo2.jpg"></body>
     </header>
 
     <br></br>
     <div class="container">
-        <h1 class="text-center mt-5 mb-5">VUELOS</h1>
+        <h1 style="color:#000000" class="text-center mt-5 mb-5">VUELOS</h1>
+        <td class="func1">
+            <a href="{{ url_for('vuelos_crear') }}">
+            <button class="favorite styled" type="submit">CREAR</button></a>
+        </td>
     </div>
-    <td class="func1"><a href="{{ url_for('vuelos_crear') }}"><button type="submit">CREAR</button></a></td>
     <br></br>
 
     <div class="card-body">
@@ -58,8 +62,8 @@
                                 <input type="text" class="form-control" value="{{vuelo.aeropuertoDestino}}" name="aeropuertoDestino">
                                 <br></br>
 
-                                <button class="btn btn-primary btn-sm mt-3" type="submit">EDITAR</button>
-                                <a href="{{url_for('remove', vuelo_id=vuelo.idVuelo)}}" class="btn btn-primary btn-sm mt-3">ELIMINAR</a>
+                                <button class="favorite styled" type="submit">EDITAR</button>
+                                <a href="{{url_for('remove', vuelo_id=vuelo.idVuelo)}}" class="buttonx">ELIMINAR</a>
                             </form>
                         </li>
                     </div>
