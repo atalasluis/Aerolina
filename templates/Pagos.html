@@ -23,8 +23,41 @@
         </nav>
         <!-- ********************************************************************** -->
     </header>
-    <body background="../static/imgs/fondo.jpg"></body>
-    <body>
-    </body>
+    <div>
+        <div>
+            <h1>Introdusca su carnet de identidad para buscar su reserva.</h1>
+            <form action="">
+                <label>C.I.</label>
+                <input type="text" class="form-control mb-3" name="CI_pasajero">
+                <button class="btn btn-primary" type="submit">BUSCAR</button>
+            </form>
+        </div>
+        <br>
+        <div>
+            <form action="">
+                <label>Numero de Tarjeta</label>
+                <br>
+                <input type="text" class="form-control mb-3" name="CI_pasajero">
+                <button class="btn btn-primary" type="submit">PAGAR</button>
+            </form>
+        </div>
+        <div class="box">
+            <small>C.I.:</small>
+            <input type="text" class="form-control" value="{{reserva.CI_pasajero}}" name="CI_pasajero">
+            <br></br>
+            <small>Nombre:</small>
+            <input type="text" class="form-control" value="{{reserva.nombrePasagero}}" name="nombrePasagero">
+            <br></br>
+            <small>Asiento:</small>
+            <input type="text" class="form-control" value="{{reserva.asiento}}" name="asiento">
+            <br></br>
+            <small>Costo:</small>
+            <input type="text" class="form-control" value="{{vuelo.costo}}" name="costo">
+            <br></br>
+            <small>Destino:</small>
+            <input type="text" class="form-control" value="{{vuelo.destino}}" name="destino">
+            <br></br>
+        </div>
+    </div>
 </body>
 </html>

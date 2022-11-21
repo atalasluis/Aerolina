@@ -32,11 +32,13 @@ def action ():
     fechaSalida=request.values.get("fechaSalida")
     destino=request.values.get("destino")
     capacidad=request.values.get("capacidad")
+    disponibilidad=request.values.get("disponibilidad")
+    costo=request.values.get("costo")
     aeropuertoOrigen=request.values.get("aeropuertoOrigen")
     aeropuertoDestino=request.values.get("aeropuertoDestino")
     #print(name,' ', desc)
     print(idVuelo)
-    _vuelos.insert_one({"idVuelo":idVuelo, "fechaSalida":fechaSalida, "destino":destino, "capacidad":capacidad, "aeropuertoOrigen":aeropuertoOrigen,"aeropuertoDestino":aeropuertoDestino})
+    _vuelos.insert_one({"idVuelo":idVuelo, "fechaSalida":fechaSalida, "destino":destino, "capacidad":capacidad, "disponibilidad":disponibilidad, "costo":costo, "aeropuertoOrigen":aeropuertoOrigen,"aeropuertoDestino":aeropuertoDestino})
     return redirect("/vuelos")
 
 #Method update
@@ -46,9 +48,11 @@ def action3 (vuelo_id):
     fechaSalida=request.values.get("fechaSalida")
     destino=request.values.get("destino")
     capacidad=request.values.get("capacidad")
+    disponibilidad=request.values.get("disponibilidad")
+    costo=request.values.get("costo")
     aeropuertoOrigen=request.values.get("aeropuertoOrigen")
     aeropuertoDestino=request.values.get("aeropuertoDestino")
-    _vuelos.update_one({"idVuelo":vuelo_id}, {'$set':{ "fechaSalida":fechaSalida, "destino":destino, "capacidad":capacidad, "aeropuertoOrigen":aeropuertoOrigen,"aeropuertoDestino":aeropuertoDestino }})
+    _vuelos.update_one({"idVuelo":vuelo_id}, {'$set':{ "fechaSalida":fechaSalida, "destino":destino, "capacidad":capacidad, "disponibilidad":disponibilidad, "costo":costo, "aeropuertoOrigen":aeropuertoOrigen,"aeropuertoDestino":aeropuertoDestino }})
     return redirect("/vuelos")
 
 #Method delete
@@ -66,20 +70,24 @@ def reserva():
 #create reserva
 @app.route("/action/crear_reserva", methods=['POST'])
 def create_reserva ():
-    idReserva=request.values.get("idReserva")
+    ciPasajero=request.values.get("CI_pasajero")
     nombre_pasajero=request.values.get("Nombre_Pasajero")
     idVuelo=request.values.get("ID_Vuelo")
-    costo=request.values.get("Costo")
     asiento=request.values.get("Asiento")
-    print(idReserva)
-    _reserva.insert_one({"idReserva":idReserva, "nombre_pasajero":nombre_pasajero, "idVuelo":idVuelo, "costo":costo, "asiento":asiento})
+    print(ciPasajero)
+    _reserva.insert_one({"ciPasajero":ciPasajero, "nombre_pasajero":nombre_pasajero, "idVuelo":idVuelo, "asiento":asiento})
     return redirect("/reserva")
 
 #----------------------- PAGOS ----------------------
 @app.route('/pagos')
-
 def pagos():
     return render_template('Pagos.html')
+#buscar reserva
+#@app.route("/edit/<string:CI_pasajero>", methods=['POST'])
+#def action3 (vuelo_id):
+#    vuelosRecieved=_vuelos.find()
+#    reservaRecieved=_reserva.find()
+#    return render_template('Pagos.html',vuelos=vuelosRecieved,reserva=reservaRecieved)
 
 #----------------------------------------------------
 if __name__ == '__main__':
