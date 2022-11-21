@@ -48,3 +48,32 @@ header a {
     margin-top: 30px;
     transition: .5s;
 }
+
+/* css de box */
+div{
+    float: left;
+    margin: 30px;
+    margin-top: 10px;
+    /* separacion de div */
+    margin-right: 200px;
+}
+
+.box {
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 350px;
+    height: 150px;
+    margin: 10px;
+    margin-top: 5px;
+    padding: 25px;
+    justify-content: space-between;
+    /*border: 2px solid black;*/
+}
+  
+.item {
+    float: left;
+    width: 150px;
+    flex: 1;
+    /*background-color: rgb(105, 196, 231);*/
+}

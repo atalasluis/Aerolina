@@ -7,6 +7,7 @@ app = Flask(__name__)
 client = MongoClient("mongodb://127.0.0.1:27017") #host uri
 db = client.Aerolinea    #Select the database
 _vuelos = db.vuelos #Select the collection name
+_reserva = db.reserva
 
 #--------------------- Home -------------------------
 
@@ -59,7 +60,20 @@ def remove (vuelo_id):
 #----------------- CRUD DE RESERVA ------------------
 @app.route('/reserva')
 def reserva():
-    return render_template('miReserva.html')
+    vuelosRecieved=_vuelos.find()
+    return render_template('miReserva.html',vuelos=vuelosRecieved)
+
+#create reserva
+@app.route("/action/crear_reserva", methods=['POST'])
+def create_reserva ():
+    idReserva=request.values.get("idReserva")
+    nombre_pasajero=request.values.get("Nombre_Pasajero")
+    idVuelo=request.values.get("ID_Vuelo")
+    costo=request.values.get("Costo")
+    asiento=request.values.get("Asiento")
+    print(idReserva)
+    _reserva.insert_one({"idReserva":idReserva, "nombre_pasajero":nombre_pasajero, "idVuelo":idVuelo, "costo":costo, "asiento":asiento})
+    return redirect("/reserva")
 
 #----------------------- PAGOS ----------------------
 @app.route('/pagos')

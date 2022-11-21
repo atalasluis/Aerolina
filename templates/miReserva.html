@@ -18,17 +18,51 @@
         
         <nav>
             <a href="{{url_for('vuelos')}}" class="nav-link">VUELOS</a>
-            <a href="{{url_for('reserva')}}" class="nav-link">MI_RESERVA</a>
+            <a href="{{url_for('reserva')}}" class="nav-link">RESERVA</a>
             <a href="{{url_for('pagos')}}" class="nav-link">PAGOS</a>
         </nav>
         <!-- ********************************************************************** -->
     </header>
-    <body background="../static/imgs/fondo.jpg"></body>
-    <body>
-
-    </body>
-
-
-
+    <br>
+    <div>
+        <div>
+            <!-- crud de pasajero -->
+            <form action="/action/crear_reserva" method="POST">
+                <small>ID Reserva:</small>
+                <input type="text" class="form-control mb-3" name="idReserva">
+                <br></br>
+                <small>Nombre Pasajero:</small>
+                <input type="text" class="form-control mb-3" name="Nombre_Pasajero">
+                <br></br>
+                <small>ID Vuelo:</small>
+                <input type="text" class="form-control mb-3" name="ID_Vuelo">
+                <br></br>
+                <small>Costo:</small>
+                <input type="text" class="form-control mb-3" name="Costo">
+                <br></br>
+                <small>Asiento</small>
+                <input type="text" class="form-control mb-3" name="Asiento">
+                <br></br>
+                <button class="btn btn-primary" type="submit">Reservar</button>
+            </form>
+        </div>
+        <div class="box">
+            {% for vuelo in vuelos %}
+            <form action="">
+                <small>ID Vuelo:</small>
+                <input type="text" class="form-control" value="{{vuelo.idVuelo}}" name="idVuelo">
+                <br></br>
+                <small>Fecha de Salida:</small>
+                <input type="text" class="form-control" value="{{vuelo.fechaSalida}}" name="fechaSalida">
+                <br></br>
+                <small>Destino:</small>
+                <input type="text" class="form-control" value="{{vuelo.destino}}" name="destino">
+                <br></br>
+                <a href="{{url_for('remove', vuelo_id=vuelo.idVuelo)}}" class="btn btn-primary btn-sm mt-3">AGREGAR</a>
+                <br></br>
+            </form>
+            {% endfor %}
+        </div>
+    </div>
 </body>
 </html>

@@ -18,7 +18,7 @@
         
         <nav>
             <a href="{{url_for('vuelos')}}" class="nav-link">VUELOS</a>
-            <a href="{{url_for('reserva')}}" class="nav-link">MI_RESERVA</a>
+            <a href="{{url_for('reserva')}}" class="nav-link">RESERVA</a>
             <a href="{{url_for('pagos')}}" class="nav-link">PAGOS</a>
         </nav>
         <!-- ********************************************************************** -->
@@ -44,7 +44,7 @@
                                 <br></br>
                                 <small>Fecha de Salida: </small>
                                 <input type="text" class="form-control" value="{{vuelo.fechaSalida}}" name="fechaSalida">
-                                <br></br>
+                                <br></br> 
                                 <small>Destino: </small>
                                 <input type="text" class="form-control" value="{{vuelo.destino}}" name="destino">
                                 <br></br>
