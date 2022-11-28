@@ -28,25 +28,15 @@
         <h1 style="color:#000000" class="text-center mt-5 mb-5">PAGOS</h1>
         <div>
             <label>Introduzca su Carnet de Identidad para buscar su reserva.</label>
-            <form action="">
+            <form action="/pago_tarjeta" method="GET">
                 <label>C.I.</label>
                 <br>
-                 <input type="text" class="form-control mb-3" name="CI_pasajero">
+                 <input type="text" name="CI_pasajero" placeholder="Search Task" size="15">
                  <br>
                 <button class="favorite styled" type="submit">BUSCAR</button>
             </form>
         </div>
         <br>
-        <div>
-            <form action="">
-                <label>Numero de Tarjeta</label>
-                <br>
-                <input type="text" class="form-control mb-3" name="CI_pasajero">
-                <br>
-                <button class="favorite styled" type="submit">PAGAR</button>
-            </form>
-        </div>
-      
     </div>
 </body>
 </html>

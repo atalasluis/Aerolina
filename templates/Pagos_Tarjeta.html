@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aerolinea Fenix</title>
+    <link rel="stylesheet" href='../static/css/style.css'>
+    <link rel="icon" href="../static/imgs/logo.png">
+</head>
+<body>
+    <header>
+        <!-- ************************** Barra de navegacion *********************** -->
+        <a href="{{url_for('home')}}" class="logo">
+            <img src="../static/imgs/logo.png" alt="logo de la compañia" class="logo-img">
+            <h2 class="logo-nombre">F E N I X</h2>
+        </a>
+        
+        <nav>
+            <a href="{{url_for('vuelos')}}" class="nav-link">VUELOS</a>
+            <a href="{{url_for('reserva')}}" class="nav-link">RESERVA</a>
+            <a href="{{url_for('pagos')}}" class="nav-link">PAGOS</a>
+        </nav>
+        <!-- ********************************************************************** -->
+    </header>
+    <div>
+        <div>
+            <form action="">
+                <label>Numero de Tarjeta</label>
+                <br>
+                <input type="text" class="form-control mb-3" name="CI_pasajero">
+                <button class="favorite styled" type="submit">PAGAR</button>
+            </form>
+        </div>
+        <div class="box">
+            {% for reservas in reserva %}
+            <small>C.I.:</small>
+            <input type="text" class="form-control" value="{{reservas.ciPasajero}}" name="CI_pasajero">
+            <br></br>
+            <small>Nombre:</small>
+            <input type="text" class="form-control" value="{{reservas.nombre_pasajero}}" name="nombrePasagero">
+            <br></br>
+            <small>Asiento:</small>
+            <input type="text" class="form-control" value="{{reservas.asiento}}" name="asiento">
+            <br></br>
+            {% endfor %}
+            {% for vuelos in vuelo %}
+            <small>fechaSalida:</small>
+            <input type="text" class="form-control" value="{{vuelos.fechaSalida}}" name="asiento">
+            <br></br>
+            <small>destino:</small>
+            <input type="text" class="form-control" value="{{vuelos.destino}}" name="asiento">
+            <br></br>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

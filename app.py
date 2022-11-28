@@ -82,13 +82,20 @@ def create_reserva ():
 @app.route('/pagos')
 def pagos():
     return render_template('Pagos.html')
-#buscar reserva
-#@app.route("/edit/<string:CI_pasajero>", methods=['POST'])
-#def action3 (vuelo_id):
-#    vuelosRecieved=_vuelos.find()
-#    reservaRecieved=_reserva.find()
-#    return render_template('Pagos.html',vuelos=vuelosRecieved,reserva=reservaRecieved)
 
+#buscar reserva
+@app.route("/pago_tarjeta", methods=['GET'])
+def actionPago ():
+    ciPasajero=request.values.get("CI_pasajero")
+    print(ciPasajero)
+    reservaRecieved=_reserva.find({"ciPasajero":ciPasajero})
+    print(reservaRecieved)
+    idVuelo=_reserva.find({"ciPasajero":ciPasajero},{"idVuelo": "true", "_id": "false"})
+    print(idVuelo)
+    vueloRecived=_vuelos.find({"idVuelo":idVuelo})
+    #print(vueloRecived)
+    return render_template('Pagos_Tarjeta.html',reserva=reservaRecieved,vuelo=vueloRecived)
+#posible solucion $lookup
 #----------------------------------------------------
 if __name__ == '__main__':
     app.run(debug=True, port=4000)
