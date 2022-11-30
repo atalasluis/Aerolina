@@ -37,8 +37,6 @@ def action ():
     costo=request.values.get("costo")
     aeropuertoOrigen=request.values.get("aeropuertoOrigen")
     aeropuertoDestino=request.values.get("aeropuertoDestino")
-    #print(name,' ', desc)
-    print(idVuelo)
     _vuelos.insert_one({"idVuelo":idVuelo, "fechaSalida":fechaSalida, "destino":destino, "capacidad":capacidad, "disponibilidad":disponibilidad, "costo":costo, "aeropuertoOrigen":aeropuertoOrigen,"aeropuertoDestino":aeropuertoDestino})
     return redirect("/vuelos")
 
@@ -89,19 +87,16 @@ def pagos():
 def actionPago ():
     ciPasajero=request.values.get("CI_pasajero")
     reservaRecieved=_reserva.find({"ciPasajero":ciPasajero})
-    #idVuelo=_reserva.find({"ciPasajero":ciPasajero},{"idVuelo": "true", "_id": "false"})
-    #print(*idVuelo)# idvuelo es un diccionario {'_id': ObjectId('637b19a8ca46918cde0e7527'), 'idVuelo': '1'}
-    #print(idVuelo['idVuelo'])
-    #vueloid=idVuelo['idVuelo']
-    #vueloRecived=_vuelos.find({"idVuelo":vueloid})
     return render_template('Pagos_Tarjeta.html',reserva=reservaRecieved)
 
-# def actionVuelos():
-#     print(idVuelo)
-#     vueloRecived=_vuelos.find({"idVuelo":idVuelo})
-#     print(vueloRecived)
-#     return render_template('Pagos_Targeta.html',)
+#mostrar vuelo (no terminado)
+@app.route("/mostrarVuelo/<string:vuelo_id>")
+def mostrarVuelo(vuelo_id):
+    vuelosRecived=_vuelos.find({'idVuelo' : vuelo_id})
+    #<a href="{{url_for('mostrarVuelo', vuelo_id=reservas.idVuelo)}}" class="buttonx">Mostrar mas</a>
+    return render_template('Pagos_Tarjeta.html', vuelo=vuelosRecived)
 
+#guardar pago
 @app.route("/action/crear_Pago", methods=['POST'])
 def create_Pago ():
     numeroTargeta=request.values.get("numeroTargeta")
@@ -109,6 +104,7 @@ def create_Pago ():
     _pagos.insert_one({"numeroTargeta":numeroTargeta, "IdReserva":idReserva})
     return redirect("/pagoExistoso")
 
+# mensage de pago
 @app.route("/pagoExistoso")
 def pago_exitoso ():
     return render_template('Exito.html')

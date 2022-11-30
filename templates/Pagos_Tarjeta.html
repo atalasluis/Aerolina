@@ -25,16 +25,6 @@
         <body background="../static/imgs/fondo6.jpg"></body>
     </header>
     <div>
-        <div>
-            <!--
-            <form action="/action/crear_Pago" method="POST">
-                <label>Numero de Tarjeta</label>
-                <br>
-                <input type="text" class="form-control mb-3" name="numeroTargeta">
-                <button class="favorite styled" type="submit">PAGAR</button>
-            </form>
-            -->
-        </div>
         <div class="box">
             <h1 style="color:#000000" class="text-center mt-5 mb-5">PAGO</h1>
             <form action="/action/crear_Pago" method="POST">
@@ -46,16 +36,19 @@
             <small>Nombre:</small>
             <input type="text" class="form-control mb-3" value="{{reservas.nombre_pasajero}}" name="nombrePasagero">
             <br></br>
+            <small>id vuelo:</small>
+            <input type="text" class="form-control mb-3" value="{{reservas.idVuelo}}" name="Vuelo">
+            <br></br>
             <small>Asiento:</small>
             <input type="text" class="form-control mb-3" value="{{reservas.asiento}}" name="asiento">
             <br></br>
             {% endfor %}
             {% for vuelos in vuelo %}
             <small>fechaSalida:</small>
-            <input type="text" class="form-control mb-3" value="{{vuelos.fechaSalida}}" name="asiento">
+            <input type="text" class="form-control mb-3" value="{{vuelos.fechaSalida}}" name="fechaSalida">
             <br></br>
             <small>destino:</small>
-            <input type="text" class="form-control mb-3" value="{{vuelos.destino}}" name="asiento">
+            <input type="text" class="form-control mb-3" value="{{vuelos.destino}}" name="destino">
             <br></br>
             {% endfor %}
             <br>
@@ -63,8 +56,10 @@
             <br>
             <input type="text" class="form-control mb-3" name="numeroTargeta">
             <br>
+            <br>
             <button class="favorite styled" type="submit">PAGAR</button>
-            </form>
+            <br>
+        </form>
         </div>
     </div>
 </body>
