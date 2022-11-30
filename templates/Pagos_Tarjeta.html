@@ -25,33 +25,44 @@
     </header>
     <div>
         <div>
-            <form action="">
+            <!--
+            <form action="/action/crear_Pago" method="POST">
                 <label>Numero de Tarjeta</label>
                 <br>
-                <input type="text" class="form-control mb-3" name="CI_pasajero">
+                <input type="text" class="form-control mb-3" name="numeroTargeta">
                 <button class="favorite styled" type="submit">PAGAR</button>
             </form>
+            -->
         </div>
         <div class="box">
+            <form action="/action/crear_Pago" method="POST">
+
             {% for reservas in reserva %}
             <small>C.I.:</small>
-            <input type="text" class="form-control" value="{{reservas.ciPasajero}}" name="CI_pasajero">
+            <input type="text" class="form-control mb-3" value="{{reservas.ciPasajero}}" name="CI_pasajero">
             <br></br>
             <small>Nombre:</small>
-            <input type="text" class="form-control" value="{{reservas.nombre_pasajero}}" name="nombrePasagero">
+            <input type="text" class="form-control mb-3" value="{{reservas.nombre_pasajero}}" name="nombrePasagero">
             <br></br>
             <small>Asiento:</small>
-            <input type="text" class="form-control" value="{{reservas.asiento}}" name="asiento">
+            <input type="text" class="form-control mb-3" value="{{reservas.asiento}}" name="asiento">
             <br></br>
             {% endfor %}
             {% for vuelos in vuelo %}
             <small>fechaSalida:</small>
-            <input type="text" class="form-control" value="{{vuelos.fechaSalida}}" name="asiento">
+            <input type="text" class="form-control mb-3" value="{{vuelos.fechaSalida}}" name="asiento">
             <br></br>
             <small>destino:</small>
-            <input type="text" class="form-control" value="{{vuelos.destino}}" name="asiento">
+            <input type="text" class="form-control mb-3" value="{{vuelos.destino}}" name="asiento">
             <br></br>
             {% endfor %}
+            <br>
+            <label>Numero de Tarjeta</label>
+            <br>
+            <input type="text" class="form-control mb-3" name="numeroTargeta">
+            <br>
+            <button class="favorite styled" type="submit">PAGAR</button>
+            </form>
         </div>
     </div>
 </body>

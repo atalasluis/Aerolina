@@ -8,6 +8,7 @@ client = MongoClient("mongodb://127.0.0.1:27017") #host uri
 db = client.Aerolinea    #Select the database
 _vuelos = db.vuelos #Select the collection name
 _reserva = db.reserva
+_pagos = db.pagos
 
 #--------------------- Home -------------------------
 
@@ -100,6 +101,17 @@ def actionPago ():
 #     vueloRecived=_vuelos.find({"idVuelo":idVuelo})
 #     print(vueloRecived)
 #     return render_template('Pagos_Targeta.html',)
+
+@app.route("/action/crear_Pago", methods=['POST'])
+def create_Pago ():
+    numeroTargeta=request.values.get("numeroTargeta")
+    idReserva=request.values.get("CI_pasajero")
+    _pagos.insert_one({"numeroTargeta":numeroTargeta, "IdReserva":idReserva})
+    return redirect("/pagoExistoso")
+
+@app.route("/pagoExistoso")
+def pago_exitoso ():
+    return render_template('Exito.html')
 
 #----------------------------------------------------
 if __name__ == '__main__':
