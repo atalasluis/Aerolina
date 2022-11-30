@@ -87,15 +87,20 @@ def pagos():
 @app.route("/pago_tarjeta", methods=['GET'])
 def actionPago ():
     ciPasajero=request.values.get("CI_pasajero")
-    print(ciPasajero)
     reservaRecieved=_reserva.find({"ciPasajero":ciPasajero})
-    print(reservaRecieved)
-    idVuelo=_reserva.find({"ciPasajero":ciPasajero},{"idVuelo": "true", "_id": "false"})
-    print(idVuelo)
-    vueloRecived=_vuelos.find({"idVuelo":idVuelo})
-    #print(vueloRecived)
-    return render_template('Pagos_Tarjeta.html',reserva=reservaRecieved,vuelo=vueloRecived)
-#posible solucion $lookup
+    #idVuelo=_reserva.find({"ciPasajero":ciPasajero},{"idVuelo": "true", "_id": "false"})
+    #print(*idVuelo)# idvuelo es un diccionario {'_id': ObjectId('637b19a8ca46918cde0e7527'), 'idVuelo': '1'}
+    #print(idVuelo['idVuelo'])
+    #vueloid=idVuelo['idVuelo']
+    #vueloRecived=_vuelos.find({"idVuelo":vueloid})
+    return render_template('Pagos_Tarjeta.html',reserva=reservaRecieved)
+
+# def actionVuelos():
+#     print(idVuelo)
+#     vueloRecived=_vuelos.find({"idVuelo":idVuelo})
+#     print(vueloRecived)
+#     return render_template('Pagos_Targeta.html',)
+
 #----------------------------------------------------
 if __name__ == '__main__':
     app.run(debug=True, port=4000)
