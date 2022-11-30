@@ -22,6 +22,7 @@
             <a href="{{url_for('pagos')}}" class="nav-link">PAGOS</a>
         </nav>
         <!-- ********************************************************************** -->
+        <body background="../static/imgs/fondo6.jpg"></body>
     </header>
     <div>
         <div>
@@ -35,6 +36,7 @@
             -->
         </div>
         <div class="box">
+            <h1 style="color:#000000" class="text-center mt-5 mb-5">PAGO</h1>
             <form action="/action/crear_Pago" method="POST">
 
             {% for reservas in reserva %}
